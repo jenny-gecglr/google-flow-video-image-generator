@@ -1,6 +1,6 @@
 # Google Flow Video Generator
 
-![Google Flow Video Generator](assets/banner.svg)
+![Google Flow Video Generator](assets/banner.jpg)
 
 > Run a full AI image and video production line in Google Flow from a prompt file: generate, number, download, check for gaps, storyboard and rough-cut, with credits that are never spent behind your back.
 
@@ -10,7 +10,7 @@
 
 > **Heads up:** Flow has no official API. This skill drives the Flow web app in your own logged-in Chrome session through browser automation. Check Google's terms of use and accept the account risk before using it.
 
-**Contents:** [Why](#why-this-exists) · [How it works](#how-it-works) · [The prompt file](#the-prompt-file) · [Credit safety](#credit-safety) · [Quality targets](#quality-targets) · [Guardrails](#guardrails) · [Requirements](#requirements) · [Install](#install) · [Example prompts](#example-prompts) · [Example conversation](#example-conversation) · [FAQ](#faq) · [Limitations](#limitations) · [License](#license)
+**Contents:** [Why](#why-this-exists) · [How it works](#how-it-works) · [The prompt file](#the-prompt-file) · [Credit safety](#credit-safety) · [Quality targets](#quality-targets) · [Guardrails](#guardrails) · [Requirements](#requirements) · [Install](#install) · [Example prompts](#example-prompts) · [Example conversation](#example-conversation) · [FAQ](#faq) · [Limitations](#limitations) · [Credits](#credits) · [License](#license)
 
 ## Why this exists
 
@@ -19,6 +19,7 @@ Producing hundreds of scenes by hand in Flow is slow and easy to get wrong: numb
 ## How it works
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Georgia, serif","primaryColor":"#582377","primaryTextColor":"#C7B3A3","primaryBorderColor":"#A3787B","lineColor":"#A3787B","tertiaryTextColor":"#C7B3A3","edgeLabelBackground":"#582377"}}}%%
 flowchart TD
     A["Prompt file"] --> B["Generate in Flow<br/>groups of 24"]
     B --> C{"Costs credits?"}
@@ -31,6 +32,14 @@ flowchart TD
     H --> I["Gap check"]
     I --> J["Storyboard"]
     J --> K["Rough cut<br/>preview"]
+    classDef base fill:#582377,stroke:#A3787B,color:#C7B3A3,stroke-width:1.5px
+    classDef ask fill:#77732C,stroke:#C7B3A3,color:#F2E8DD,stroke-width:1.5px
+    classDef gate fill:#A3787B,stroke:#C7B3A3,color:#1D0C15,stroke-width:1.5px
+    classDef done fill:#8F8E66,stroke:#C7B3A3,color:#1D0C15,stroke-width:1.5px
+    class A,B,E,F,G,H,I,J base
+    class C ask
+    class D gate
+    class K done
 ```
 
 | # | Step | What happens |
@@ -139,6 +148,10 @@ Claude: 48 of 48 files found, no missing numbers. Here are the two sheets of
 - Browser automation depends on Flow's interface; a redesign can break steps.
 - It is deliberately slow and sequential, not a bulk-generation tool.
 - Browser tabs freeze with lots of media. If screenshots time out, the skill reads the page text or uses JavaScript, then reloads.
+
+## Credits
+
+The visual identity of this repository (its color palette and art direction) is the author's own. The banner illustration was generated with Google Flow (Nano Banana) from original prompts, and the lettering was added afterwards. The title is set in Cinzel Decorative, the script line in Pinyon Script and the subtitle in Cormorant Garamond, all under the SIL Open Font License.
 
 ## License
 
