@@ -17,7 +17,7 @@ Producing hundreds of scenes by hand in Flow is slow and easy to get wrong: numb
 ## How it works
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["Prompt file"] --> B["Generate in Flow<br/>groups of 24"]
     B --> C{"Costs credits?"}
     C -- yes --> D["You approve"]
