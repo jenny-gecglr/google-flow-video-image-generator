@@ -1,5 +1,7 @@
 # Google Flow Video Generator
 
+![Google Flow Video Generator](assets/banner.svg)
+
 > Run a full AI image and video production line in Google Flow from a prompt file: generate, number, download, check for gaps, storyboard and rough-cut, with credits that are never spent behind your back.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -8,7 +10,7 @@
 
 > **Heads up:** Flow has no official API. This skill drives the Flow web app in your own logged-in Chrome session through browser automation. Check Google's terms of use and accept the account risk before using it.
 
-**Contents:** [Why](#why-this-exists) · [How it works](#how-it-works) · [The prompt file](#the-prompt-file) · [Credit safety](#credit-safety) · [Quality targets](#quality-targets) · [Guardrails](#guardrails) · [Requirements](#requirements) · [Install](#install) · [Example prompts](#example-prompts) · [FAQ](#faq) · [Limitations](#limitations) · [License](#license)
+**Contents:** [Why](#why-this-exists) · [How it works](#how-it-works) · [The prompt file](#the-prompt-file) · [Credit safety](#credit-safety) · [Quality targets](#quality-targets) · [Guardrails](#guardrails) · [Requirements](#requirements) · [Install](#install) · [Example prompts](#example-prompts) · [Example conversation](#example-conversation) · [FAQ](#faq) · [Limitations](#limitations) · [License](#license)
 
 ## Why this exists
 
@@ -101,6 +103,24 @@ Or download the folder and place it at `~/.claude/skills/google-flow-video-gener
 - "Generate this prompt file in Flow."
 - "Make the storyboard for the scenes we just generated."
 - "Generate this one image in Flow."
+
+## Example conversation
+
+An illustration of the flow (the numbers are made up; real prices are whatever Flow displays):
+
+```text
+You:    Generate this prompt file in Flow.
+Claude: I created a new Flow project and pasted the vocabulary block with the
+        first group of 24 prompts (10 videos, 14 images). Flow shows a cost of
+        180 credits. Approve?
+You:    Yes.
+Claude: Approved with the plain Approve button. Generation is running. When it
+        finishes I will rename all 24 items 001 to 024 and then continue with
+        the next group.
+You:    Make the storyboard when everything is downloaded.
+Claude: 48 of 48 files found, no missing numbers. Here are the two sheets of
+        24 previews.
+```
 
 ## FAQ
 

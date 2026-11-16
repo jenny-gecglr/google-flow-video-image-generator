@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-label="Google Flow Video Generator">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#120a1c"/>
+      <stop offset="1" stop-color="#2d1240"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.55" r="0.6">
+      <stop offset="0" stop-color="#be97df" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#be97df" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="300" fill="url(#bg)"/>
+  <ellipse cx="1130" cy="165" rx="190" ry="170" fill="url(#glow)"/>
+  <rect x="14" y="14" width="1252" height="272" rx="6" fill="none" stroke="#e5b675" stroke-opacity="0.55" stroke-width="1.5"/>
+  <rect x="24" y="24" width="1232" height="252" rx="3" fill="none" stroke="#e5b675" stroke-opacity="0.25" stroke-width="1"/>
+  <g fill="#e5b675" fill-opacity="0.7"><circle cx="14" cy="14" r="4"/><circle cx="1266" cy="14" r="4"/><circle cx="14" cy="286" r="4"/><circle cx="1266" cy="286" r="4"/></g>
+  <text x="84" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="15" letter-spacing="6" fill="#be97df">CLAUDE  CODE  SKILL</text>
+  <text x="84" y="168" font-family="Georgia, 'Times New Roman', serif" font-size="60" font-style="italic" fill="#f3ede4">Google Flow Video Generator</text>
+  <text x="84" y="212" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#c4b3d2">From prompt file to rough cut, credits never spent unasked.</text>
+  <text x="84" y="248" font-family="Georgia, 'Times New Roman', serif" font-size="17" letter-spacing="2" fill="#8b7aa0">generate  ·  number  ·  download  ·  storyboard  ·  rough cut</text>
+  <g transform="translate(1055 38)">
+    <path d="M0 224 L0 96 Q0 24 75 0 Q150 24 150 96 L150 224 Z" fill="#120a1c" fill-opacity="0.65" stroke="#e5b675" stroke-width="2.5"/>
+    <path d="M10 214 L10 98 Q10 36 75 14 Q140 36 140 98 L140 214 Z" fill="none" stroke="#e5b675" stroke-opacity="0.35" stroke-width="1"/>
+    <g stroke="#120a1c" stroke-width="5">
+      <rect x="34" y="74" width="38" height="52" fill="#be97df"/>
+      <rect x="78" y="74" width="38" height="52" fill="#582377"/>
+      <rect x="34" y="132" width="38" height="52" fill="#e5b675"/>
+      <rect x="78" y="132" width="38" height="52" fill="#a9477a"/>
+    </g>
+  </g>
+</svg>
