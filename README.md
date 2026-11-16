@@ -1,8 +1,8 @@
-# Google Flow Video Generator
+# Google Flow Video and Image Generator
 
-![Google Flow Video Generator](assets/banner.jpg)
+![Google Flow Video and Image Generator](assets/banner.jpg)
 
-> Run a full AI image and video production line in Google Flow from a prompt file: generate, number, download, check for gaps, storyboard and rough-cut, with credits that are never spent behind your back.
+> Hand Claude a prompt file and get back numbered, 4K-ready images and 1080p video from Google Flow, with a storyboard and a rough cut, and credits that are never spent behind your back.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Claude Code skill](https://img.shields.io/badge/Claude%20Code-skill-blueviolet)
@@ -10,11 +10,47 @@
 
 > **Heads up:** Flow has no official API. This skill drives the Flow web app in your own logged-in Chrome session through browser automation. Check Google's terms of use and accept the account risk before using it.
 
-**Contents:** [Why](#why-this-exists) · [How it works](#how-it-works) · [The prompt file](#the-prompt-file) · [Credit safety](#credit-safety) · [Quality targets](#quality-targets) · [Guardrails](#guardrails) · [Requirements](#requirements) · [Install](#install) · [Example prompts](#example-prompts) · [Example conversation](#example-conversation) · [FAQ](#faq) · [Limitations](#limitations) · [Credits](#credits) · [License](#license)
+**Contents:** [Why](#why-this-exists) · [Prompt file to rough cut](#prompt-file-to-rough-cut) · [What makes it different](#what-makes-it-different) · [4K without the credit bill](#4k-without-the-credit-bill) · [How it works](#how-it-works) · [The prompt file](#the-prompt-file) · [Credit safety](#credit-safety) · [Quality targets](#quality-targets) · [Guardrails](#guardrails) · [Requirements](#requirements) · [Install](#install) · [Example prompts](#example-prompts) · [Example conversation](#example-conversation) · [FAQ](#faq) · [Limitations](#limitations) · [Credits](#credits) · [License](#license)
 
 ## Why this exists
 
-Producing hundreds of scenes by hand in Flow is slow and easy to get wrong: numbering gets lost, character descriptions are forgotten between batches, and credits are spent by accident. This skill gives Claude one strict, repeatable routine for the whole line, from prompt file to rough cut.
+Producing hundreds of scenes by hand in Flow is slow and easy to get wrong. Numbering gets lost, character descriptions are forgotten between batches, downloads arrive in the wrong size, and credits get spent by accident. Most people end up babysitting a browser tab for hours.
+
+This skill gives Claude one strict, repeatable routine for the whole line, so you hand over a prompt file and review the result instead of clicking through it.
+
+| | By hand | **With this skill** |
+|---|---|---|
+| Submitting prompts | Paste, wait, repeat for every scene | Groups of 24, with your shared vocabulary block pasted before every group |
+| File names | Whatever Flow gives you | Every item renamed with its prompt number (001, 002, ...) |
+| Credits | Easy to spend by accident | Price quoted first, nothing spent without your yes, "always approve" never chosen |
+| Image size | The size Flow hands you | Upscaled to 4K outside Flow |
+| Missing items | Found late, by eye | Counted and reported by number |
+| Review | Scroll through hundreds of files | Labeled storyboard sheets, then a rough cut |
+
+## Prompt file to rough cut
+
+1. **Write the script once.** Your prompt file carries labels, timings and a shared world vocabulary (characters, symbols, style).
+2. **Let Claude run the line.** It generates in Flow, asks before any credit is spent, numbers every output and downloads the project.
+3. **Check and review.** A gap check, storyboard sheets and a HyperFrames rough cut show you what you have before you edit.
+
+## 4K without the credit bill
+
+Flow's project download gives images at 1K and video at 720p, and its own bulk 4K download is lower quality. This skill closes that gap on purpose:
+
+- **Images** are upscaled to **4K outside Flow** (for example Real-ESRGAN on a free cloud GPU notebook), keeping the prompt number in every file name.
+- **Video** is brought to **1080p** with `ffmpeg`. It is never upscaled to 4K, because that is very expensive in credits.
+- The result: sharp 4K stills and clean 1080p clips, with the heavy conversion done outside Flow.
+
+## What makes it different
+
+These are methods the author found by trial and error, and they are the heart of the skill:
+
+- **Groups of 24 with the vocabulary block repeated.** Flow forgets the world vocabulary between submissions, so it is pasted before every group of 24 prompts.
+- **Rename by prompt number.** Every output gets its prompt number, so scenes, narration and files stay in sync.
+- **Project zip, then upscale outside Flow.** The zip is the reliable route; images go to 4K on a free cloud GPU, video to 1080p with `ffmpeg`. Video is never upscaled to 4K.
+- **Credit gate.** The displayed price is quoted, you say yes, and "always approve" is never chosen.
+- **One project per video.** Heavy projects freeze the tab, so each video gets a fresh one.
+- **Real Chrome, not a test browser.** A separate automated browser never finished Flow's upscale step; the real Chrome profile worked.
 
 ## How it works
 
@@ -90,22 +126,24 @@ Each prompt starts with a label, followed by one paragraph:
 
 ## Requirements
 
-| Needed | For |
-|---|---|
-| Claude Code with browser automation (for example Claude in Chrome) | Driving Flow |
-| A Google Flow account, signed in through Chrome | Generation |
-| `ffmpeg` | Previews and 1080p video |
-| Recommended: a free cloud GPU notebook with Real-ESRGAN (or an equivalent upscaler) | Upscaling images to 4K |
-| Optional: HyperFrames | The rough-cut preview |
-| Optional: a Chrome download extension | The backup download route |
+Everything below is checked on the first run, and the skill offers to install what is missing (it always asks first).
+
+| Needed | For | How it is set up |
+|---|---|---|
+| Claude Code with browser automation (for example Claude in Chrome) | Driving Flow | Install the extension and connect it |
+| A Google Flow account, signed in through Chrome | Generation | You sign in yourself |
+| `ffmpeg` | Previews and 1080p video | `winget install Gyan.FFmpeg` (Windows), `brew install ffmpeg` (macOS) |
+| A free cloud GPU notebook with Real-ESRGAN (recommended) | Upscaling images to 4K | Google Colab with an L4 GPU: upload the 1K images, run the 4x upscale, download. About 4 s per image in the author's tests. |
+| Optional: Node.js and HyperFrames | The rough-cut preview | Node.js, then `npx hyperframes` |
+| Optional: a Chrome download extension | The backup download route | Install it in Chrome |
 
 ## Install
 
 ```bash
-git clone https://github.com/jenny-gecglr/google-flow-video-generator.git ~/.claude/skills/google-flow-video-generator
+git clone https://github.com/jenny-gecglr/google-flow-video-image-generator.git ~/.claude/skills/google-flow-video-image-generator
 ```
 
-Or download the folder and place it at `~/.claude/skills/google-flow-video-generator`.
+Or download the folder and place it at `~/.claude/skills/google-flow-video-image-generator`.
 
 ## Example prompts
 
