@@ -12,6 +12,11 @@
 
 **Contents:** [Why](#why-this-exists) · [Prompt file to rough cut](#prompt-file-to-rough-cut) · [What makes it different](#what-makes-it-different) · [4K without the credit bill](#4k-without-the-credit-bill) · [How it works](#how-it-works) · [The prompt file](#the-prompt-file) · [Credit safety](#credit-safety) · [Quality targets](#quality-targets) · [Guardrails](#guardrails) · [Requirements](#requirements) · [Install](#install) · [Example prompts](#example-prompts) · [Example conversation](#example-conversation) · [FAQ](#faq) · [Limitations](#limitations) · [Credits](#credits) · [License](#license)
 
+## What's new in v1.1.0
+
+- **Durations and credits (a snapshot):** the models Flow offered (Omni 1.2 Flash 3 to 15 seconds, Veo 3.1 at 4, 6 or 8 seconds), a credit table for Omni 1.2 Flash at 720p and the fixed Veo prices, with the rule that you still read the price Flow displays.
+- **Lessons from working in Flow:** where splatter and confetti come from, why colors come out darker, how to fix a video, the chat panel, batch generation with a reference in every message, matching images to prompt numbers, and browser traps. They are in [SKILL.md](SKILL.md).
+
 ## Why this exists
 
 Producing hundreds of scenes by hand in Flow is slow and easy to get wrong. Numbering gets lost, character descriptions are forgotten between batches, downloads arrive in the wrong size, and credits get spent by accident. Most people end up babysitting a browser tab for hours.
@@ -108,7 +113,7 @@ Each prompt starts with a label, followed by one paragraph:
 | An action costs credits | Quotes the price Flow displays, asks "Approve?", and presses Approve only after your yes |
 | An action costs 0 credits | Starts without asking |
 | "Always approve in project" is offered | Never chooses it |
-| Prices change with model or resolution | Always reads the displayed price; never relies on remembered numbers |
+| Prices change with model or resolution | Always reads the displayed price; remembered numbers are used only as labeled snapshots or estimates |
 
 ## Quality targets
 
